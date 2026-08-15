@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — Free Headkicks</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/badge-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0c0d;
+    --paper:#ece8df;
+    --blood:#d91e2b;
+    --brass:#b8894a;
+    --concrete:#6e6b66;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+    text-align:center;
+  }
+  .card{ max-width:480px; }
+  .badge{ width:76px; height:76px; margin-bottom:28px; }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:16px;
+  }
+  h1{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    font-size:2.6rem;
+    margin:0 0 18px;
+    line-height:1.05;
+  }
+  h1 .accent{ color:var(--blood); }
+  p{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--paper);
+    margin:0 0 10px;
+  }
+  .order-id{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    color:var(--concrete);
+    margin-top:22px;
+    word-break:break-all;
+  }
+  a.btn{
+    display:inline-block;
+    margin-top:32px;
+    background:var(--blood);
+    color:#fff;
+    text-decoration:none;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:700;
+    padding:14px 26px;
+    border-radius:2px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img src="assets/badge-logo.png" alt="Free Headkicks" class="badge">
+    <div class="eyebrow">Order Confirmed</div>
+    <h1>Fresh <span class="accent">Headkicks</span><br>on the way.</h1>
+    <p>Thanks for the order — your Free Headkicks tee is getting packed up in Los Angeles.</p>
+    <p>A receipt is on its way to your inbox from Stripe.</p>
+    <div class="order-id" id="orderId"></div>
+    <a href="/" class="btn">Back to Free Headkicks</a>
+  </div>
+
+<script>
+  // Purely cosmetic — shows the Checkout Session ID for the customer's
+  // reference if they need to contact you about their order.
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  if (sessionId) {
+    document.getElementById('orderId').textContent = 'Order ref: ' + sessionId;
+  }
+</script>
+</body>
+</html>

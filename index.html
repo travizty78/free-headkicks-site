@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Headkicks — Created by a Fighter, for Fighters</title>
+<meta name="description" content="Free Headkicks (FHK) — Los Angeles Muay Thai &amp; MMA apparel. Created by a fighter, for fighters. Served up fresh daily.">
+<link rel="icon" href="assets/badge-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:#0c0c0d;
+    --ink-2:#141416;
+    --paper:#ece8df;
+    --blood:#d91e2b;
+    --blood-2:#a3161f;
+    --brass:#b8894a;
+    --concrete:#6e6b66;
+    --white:#ffffff;
+    --line: rgba(236,232,223,0.14);
+    --maxw: 1240px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  h1,h2,h3, .display{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    font-weight:400;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'Space Mono', monospace;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  :focus-visible{
+    outline: 3px solid var(--brass);
+    outline-offset: 3px;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 28px;
+    background:linear-gradient(to bottom, rgba(12,12,13,0.92), rgba(12,12,13,0));
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    width:100%;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand-mark{
+    display:flex; align-items:center; gap:10px;
+    text-decoration:none;
+  }
+  .brand-mark img{ height:84px; width:84px; }
+  .nav-links{
+    display:flex; gap:28px; align-items:center;
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--paper);
+    opacity:0.8;
+    transition:opacity 0.2s;
+  }
+  .nav-links a:hover{ opacity:1; }
+  .nav-cta{
+    background:var(--blood);
+    color:var(--white) !important;
+    padding:9px 20px;
+    border-radius:2px;
+    opacity:1 !important;
+    font-weight:700;
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .nav-cta:hover{ background:var(--blood-2); }
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-media{
+    position:absolute; inset:0;
+    z-index:0;
+  }
+  .hero-media a{ display:block; width:100%; height:100%; }
+  .hero-media img{
+    width:100%; height:100%; object-fit:cover;
+    object-position: 78% 20%;
+    filter: brightness(0.82);
+    transform:scale(1.06);
+    animation: heroZoom 18s ease-out forwards;
+  }
+  @keyframes heroZoom{
+    from{ transform:scale(1.12); }
+    to{ transform:scale(1); }
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(12,12,13,0.6) 0%, rgba(12,12,13,0.22) 30%, rgba(12,12,13,0.5) 58%, rgba(12,12,13,0.97) 100%),
+      linear-gradient(100deg, rgba(12,12,13,0.94) 0%, rgba(12,12,13,0.72) 30%, rgba(12,12,13,0.15) 58%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    width:100%;
+    padding:0 28px 76px;
+  }
+  .hero-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+  .hero-eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.22em;
+    color:var(--brass);
+    text-transform:uppercase;
+    margin-bottom:18px;
+    opacity:0;
+    animation: riseIn 0.8s 0.15s ease-out forwards;
+  }
+  .hero-headline{
+    font-size:clamp(3.2rem, 11vw, 8.5rem);
+    line-height:0.86;
+    color:var(--white);
+    text-shadow: 0 6px 30px rgba(0,0,0,0.65), 0 2px 8px rgba(0,0,0,0.8);
+    opacity:0;
+    animation: riseIn 0.9s 0.3s ease-out forwards;
+  }
+  .hero-headline .accent{ color:var(--blood); }
+  .reg-mark{
+    font-size:0.12em;
+    vertical-align:baseline;
+    position:relative;
+    top:0.08em;
+    margin-left:-0.03em;
+    opacity:0.9;
+  }
+  .hero-sub{
+    max-width:560px;
+    margin-top:26px;
+    font-size:17px;
+    line-height:1.6;
+    color:var(--paper);
+    opacity:0;
+    animation: riseIn 0.9s 0.5s ease-out forwards;
+  }
+  .hero-actions{
+    display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+    margin-top:34px;
+    opacity:0;
+    animation: riseIn 0.9s 0.65s ease-out forwards;
+  }
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:15px 26px;
+    border-radius:2px;
+    font-weight:700;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:var(--blood);
+    color:var(--white);
+  }
+  .btn-primary:hover{ background:var(--blood-2); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--paper);
+    border-color:var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--paper); }
+
+  .hero-scroll{
+    position:absolute; bottom:28px; right:28px; z-index:2;
+    writing-mode:vertical-rl;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.2em;
+    color:var(--paper);
+    opacity:0.55;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero-scroll .line{
+    width:1px; height:52px; background:var(--paper); opacity:0.4;
+  }
+
+  /* ---------- ROUND HEADER (shared) ---------- */
+  .round{
+    padding:120px 0;
+    position:relative;
+  }
+  .round-header{
+    display:flex; align-items:baseline; gap:18px;
+    margin-bottom:52px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:22px;
+  }
+  .round-num{
+    font-family:'Space Mono', monospace;
+    font-size:14px;
+    letter-spacing:0.14em;
+    color:var(--blood);
+    white-space:nowrap;
+  }
+  .round-title{
+    font-size:clamp(1.8rem, 4vw, 2.8rem);
+    color:var(--white);
+  }
+
+  /* ---------- ROUND 01: BRAND ---------- */
+  .brand-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:64px;
+    align-items:start;
+  }
+  .brand-copy p{
+    font-size:19px;
+    line-height:1.75;
+    color:var(--paper);
+    margin:0 0 22px;
+  }
+  .brand-copy .lede{
+    font-size:23px;
+    color:var(--white);
+    font-weight:600;
+    line-height:1.5;
+  }
+  .brand-copy .lede.accent-text{
+    color:var(--blood);
+  }
+  .brand-copy p .accent-text{
+    color:var(--blood);
+  }
+  .source-note{
+    font-size:11px !important;
+    color:var(--concrete) !important;
+    line-height:1.6 !important;
+    margin-top:-8px !important;
+  }
+  .brand-copy .quote-mark{
+    color:var(--blood);
+    font-family:'Anton', sans-serif;
+    font-size:1.2em;
+  }
+  .stat-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    margin-top:20px;
+    border:1px solid var(--line);
+  }
+  .stat{
+    padding:22px 18px;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{ border-right:none; }
+  .stat b{
+    display:block;
+    font-family:'Anton', sans-serif;
+    font-size:2rem;
+    color:var(--brass);
+  }
+  .stat span{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--concrete);
+  }
+  .brand-photo{
+    position:relative;
+  }
+  .brand-photo img{
+    width:100%;
+    filter:grayscale(15%) contrast(1.08);
+    border:1px solid var(--line);
+  }
+  .brand-photo .tag{
+    position:absolute; bottom:-1px; left:-1px;
+    background:var(--blood);
+    color:var(--white);
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:8px 14px;
+  }
+
+  /* ---------- ROUND 02: PRODUCT / TICKET ---------- */
+  .product-layout{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .gallery-main{
+    position:relative;
+    border:1px solid var(--line);
+    aspect-ratio:1/1;
+    overflow:hidden;
+    background:var(--ink-2);
+  }
+  .gallery-main img{
+    width:100%; height:100%; object-fit:cover;
+    transition: opacity 0.25s ease;
+  }
+  .gallery-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:42px; height:42px;
+    border-radius:50%;
+    border:1px solid rgba(236,232,223,0.35);
+    background:rgba(12,12,13,0.45);
+    color:#d8d5cd;
+    font-size:15px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    backdrop-filter: blur(2px);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .gallery-arrow:hover{
+    background:rgba(12,12,13,0.75);
+    color:var(--white);
+    border-color:rgba(236,232,223,0.7);
+  }
+  .gallery-arrow-prev{ left:14px; }
+  .gallery-arrow-next{ right:14px; }
+  .gallery-thumbs{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+    margin-top:10px;
+  }
+  .gallery-thumbs button{
+    padding:0; border:1px solid var(--line); background:var(--ink-2);
+    cursor:pointer; aspect-ratio:1/1; overflow:hidden; border-radius:2px;
+  }
+  .gallery-thumbs button img{ width:100%; height:100%; object-fit:cover; opacity:0.7; transition:opacity 0.2s; }
+  .gallery-thumbs button:hover img,
+  .gallery-thumbs button.active img{ opacity:1; }
+  .gallery-thumbs button.active{ border-color:var(--brass); }
+
+  /* Ticket stub */
+  .ticket{
+    position:relative;
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    padding:34px 32px 28px;
+  }
+  .ticket::before,
+  .ticket::after{
+    content:"";
+    position:absolute;
+    width:26px; height:26px;
+    background:var(--ink);
+    border-radius:50%;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .ticket::before{ left:-13px; }
+  .ticket::after{ right:-13px; }
+  .ticket-perf{
+    position:absolute;
+    left:0; right:0; top:0;
+    height:0;
+    border-top:2px dashed rgba(12,12,13,0.25);
+    display:none;
+  }
+  .ticket-row-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--concrete);
+    padding-bottom:18px;
+    border-bottom:2px dashed rgba(12,12,13,0.2);
+    margin-bottom:22px;
+  }
+  .ticket h3{
+    font-size:clamp(2rem, 4vw, 2.6rem);
+    line-height:0.95;
+    margin-bottom:6px;
+  }
+  .ticket .sub{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--blood-2);
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .ticket .desc{
+    font-size:15px;
+    line-height:1.6;
+    color:#3a3835;
+    margin-bottom:20px;
+  }
+  .desc-list{
+    list-style:none;
+    margin:0 0 26px;
+    padding:0;
+    display:grid;
+    gap:8px;
+  }
+  .desc-list li{
+    font-size:13px;
+    line-height:1.5;
+    color:#3a3835;
+    padding-left:18px;
+    position:relative;
+  }
+  .desc-list li::before{
+    content:"";
+    position:absolute;
+    left:0; top:7px;
+    width:7px; height:7px;
+    background:var(--blood);
+    border-radius:50%;
+  }
+  .price-row{
+    display:flex; align-items:baseline; gap:12px;
+    margin-bottom:26px;
+  }
+  .price{
+    font-family:'Anton', sans-serif;
+    font-size:2.4rem;
+    color:var(--blood);
+  }
+  .price-note{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    color:var(--concrete);
+    text-transform:uppercase;
+  }
+  .field-label{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--concrete);
+    margin-bottom:10px;
+    display:block;
+  }
+  .size-row{
+    display:flex; gap:8px; flex-wrap:wrap;
+    margin-bottom:24px;
+  }
+  .size-opt{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    font-weight:700;
+    width:46px; height:46px;
+    display:flex; align-items:center; justify-content:center;
+    border:2px solid rgba(12,12,13,0.25);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    border-radius:2px;
+    transition: all 0.15s ease;
+  }
+  .size-opt:hover{ border-color:var(--ink); }
+  .size-opt.active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .size-chart-link{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    background:none;
+    border:none;
+    padding:0;
+    margin:12px 0 26px;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--blood-2);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    cursor:pointer;
+  }
+  .size-chart-link:hover{ color:var(--blood); }
+
+  /* ---------- SIZE CHART MODAL ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(6,6,7,0.82);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    position:relative;
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:4px;
+    max-width:520px;
+    width:100%;
+    max-height:85vh;
+    overflow-y:auto;
+    padding:36px 32px 32px;
+  }
+  .modal-close{
+    position:absolute; top:16px; right:16px;
+    background:none; border:none;
+    font-size:16px; color:var(--concrete);
+    cursor:pointer; width:32px; height:32px;
+    border-radius:50%;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .modal-close:hover{ background:rgba(12,12,13,0.08); color:var(--ink); }
+  .modal-header{ margin-bottom:20px; }
+  .modal-header h3{
+    font-family:'Anton', sans-serif;
+    font-size:1.8rem;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .modal-sub{
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--concrete);
+  }
+  .size-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+  .size-table th{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    text-align:left;
+    padding:10px 12px;
+  }
+  .size-table td{
+    padding:10px 12px;
+    border-bottom:1px solid rgba(12,12,13,0.1);
+  }
+  .size-table tbody tr:nth-child(even){ background:rgba(12,12,13,0.035); }
+  .size-table tbody tr:hover{ background:rgba(217,30,43,0.06); }
+  .qty-buy{
+    display:flex; gap:12px; align-items:stretch;
+  }
+  .qty{
+    display:flex; align-items:center;
+    border:2px solid rgba(12,12,13,0.25);
+    border-radius:2px;
+  }
+  .qty button{
+    background:none; border:none;
+    width:38px; font-family:'Space Mono', monospace;
+    font-size:16px; cursor:pointer; color:var(--ink);
+  }
+  .qty span{
+    font-family:'Space Mono', monospace;
+    width:30px; text-align:center;
+  }
+  .buy-btn{
+    flex:1;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-size:13px;
+    border-radius:2px;
+    cursor:pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .buy-btn:hover{ background:var(--blood); transform:translateY(-2px); }
+  .ticket-foot{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:22px; padding-top:18px;
+    border-top:2px dashed rgba(12,12,13,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    color:var(--concrete);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .checkout-note{
+    margin-top:14px;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    color:var(--brass);
+    display:none;
+  }
+  .checkout-note.show{ display:block; }
+
+  /* ---------- ROUND 03: FOUNDER ---------- */
+  .founder-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+  }
+  .founder-photo{
+    position:relative;
+    border:1px solid var(--line);
+  }
+  .founder-photo img{
+    width:100%;
+    filter:grayscale(20%) contrast(1.1);
+  }
+  .belt-tag{
+    position:absolute; top:16px; left:-1px;
+    background:var(--brass);
+    color:var(--ink);
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:8px 14px;
+  }
+  .founder-copy .kicker{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--brass);
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .founder-copy h2{
+    font-size:clamp(1.9rem, 3.6vw, 2.7rem);
+    color:var(--white);
+    margin-bottom:22px;
+    line-height:1.05;
+  }
+  .founder-copy p{
+    font-size:17px;
+    line-height:1.75;
+    color:var(--paper);
+    margin:0 0 18px;
+  }
+  .founder-sig{
+    margin-top:28px;
+    display:flex; align-items:center; gap:16px;
+  }
+  .founder-sig img{ height:76px; width:76px; opacity:0.95; }
+  .founder-sig .name{ font-family:'Anton', sans-serif; font-size:15px; color:var(--white); letter-spacing:0.03em; }
+  .founder-sig .role{ font-family:'Space Mono', monospace; font-size:11px; color:var(--concrete); text-transform:uppercase; }
+
+  /* ---------- FINAL BELL / FOOTER ---------- */
+  .bell{
+    padding:70px 0 40px;
+    text-align:center;
+    border-top:1px solid var(--line);
+  }
+  .social-row{
+    display:flex; justify-content:center; gap:14px; flex-wrap:wrap;
+    margin-bottom:56px;
+  }
+  .social-row a{
+    text-decoration:none;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    border:1px solid var(--line);
+    padding:12px 22px;
+    border-radius:2px;
+    transition: all 0.2s ease;
+  }
+  .social-row a:hover{
+    border-color:var(--brass);
+    color:var(--brass);
+  }
+  .footer-bottom{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-brand{ display:flex; align-items:center; gap:10px; }
+  .footer-brand img{ height:72px; width:72px; opacity:0.92; }
+  .footer-brand span{ font-family:'Anton', sans-serif; font-size:13px; letter-spacing:0.05em; color:var(--concrete); }
+  .footer-meta{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    color:var(--concrete);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 920px){
+    .nav-links{ display:none; }
+    .brand-grid,
+    .product-layout,
+    .founder-grid{
+      grid-template-columns:1fr;
+    }
+    .founder-grid{ display:flex; flex-direction:column-reverse; }
+    .round{ padding:80px 0; }
+    .ticket::before,
+    .ticket::after{ display:none; }
+    .hero-scroll{ display:none; }
+  }
+  @media (max-width: 560px){
+    .stat-strip{ grid-template-columns:1fr; }
+    .stat{ border-right:none; border-bottom:1px solid var(--line); }
+    .stat:last-child{ border-bottom:none; }
+    .gallery-thumbs{ grid-template-columns:repeat(3,1fr); }
+    .size-opt{ width:40px; height:40px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand-mark">
+        <img src="assets/logo-vector.svg" alt="Free Headkicks logo">
+      </a>
+      <a href="#shop" class="nav-cta">Shop</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-media">
+      <a href="#shop" aria-label="Shop the tee">
+        <img src="assets/hero-new.jpg" alt="Free Headkicks founder landing a head kick in the ring">
+      </a>
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Los Angeles &nbsp;·&nbsp; Est. 2012 &nbsp;·&nbsp; #FHK</div>
+        <h1 class="hero-headline"><span class="accent">FREE</span><br>HEADKICKS<span class="reg-mark">&reg;</span></h1>
+        <p class="hero-sub">MMA and Muay Thai has never been more mainstream than now, thanks to global brands like UFC &amp; ONE Championship. The Headkick remains the most devastating strike in the sport — one shot to end the night.</p>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="line"></div>SCROLL</div>
+  </section>
+
+  <!-- ROUND 01 — THE BRAND -->
+  <section class="round" id="brand">
+    <div class="wrap">
+      <div class="brand-grid">
+        <div class="brand-copy">
+          <p class="lede accent-text">FREE HEADKICKS served up fresh daily!</p>
+          <p>The Headkick is the highest level strike in the sport, world-class fighters train years to land it. Perfecting different variation set-ups with timing and the correct footwork, then <strong>BOOM</strong> serving up fresh <strong class="accent-text">FREE HEADKICKS</strong> to end the opponent's night!</p>
+          <div class="stat-strip">
+            <div class="stat"><b>2012</b><span>Est. In LA</span></div>
+            <div class="stat"><b>100%</b><span>US Cotton</span></div>
+            <div class="stat"><b>#FHK</b><span>Served Fresh Daily</span></div>
+          </div>
+        </div>
+        <div class="brand-photo">
+          <a href="#shop" aria-label="Shop the tee">
+            <img src="assets/gym-portrait.jpg" alt="Fighter wearing the Free Headkicks tee in the gym">
+          </a>
+          <span class="tag mono">Los Angeles, CA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUND 02 — THE FIT / PRODUCT -->
+  <section class="round" id="shop">
+    <div class="wrap">
+      <div class="product-layout">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img id="galleryMain" src="assets/tee-front.jpg" alt="Free Headkicks black tee, front print">
+            <button type="button" class="gallery-arrow gallery-arrow-prev" id="galleryPrev" aria-label="Previous photo">&#10094;</button>
+            <button type="button" class="gallery-arrow gallery-arrow-next" id="galleryNext" aria-label="Next photo">&#10095;</button>
+          </div>
+          <div class="gallery-thumbs" id="galleryThumbs">
+            <button class="active" data-img="assets/tee-front.jpg" aria-label="Front view"><img src="assets/tee-front.jpg" alt=""></button>
+            <button data-img="assets/tee-back.jpg" aria-label="Back view"><img src="assets/tee-back.jpg" alt=""></button>
+            <button data-img="assets/tee-lady.jpg" aria-label="On model"><img src="assets/tee-lady.jpg" alt=""></button>
+            <button data-img="assets/gym-portrait.jpg" aria-label="Gym lifestyle photo"><img src="assets/gym-portrait.jpg" alt=""></button>
+            <button data-img="assets/tee-sleeve-model.jpg" aria-label="Sleeve detail"><img src="assets/tee-sleeve-model.jpg" alt=""></button>
+            <button data-img="assets/neck-label.jpg" aria-label="Neck label detail"><img src="assets/neck-label.jpg" alt=""></button>
+          </div>
+        </div>
+
+        <div class="ticket">
+          <div class="ticket-row-top">
+            <span>#FHK</span>
+            <span>LOS ANGELES, CA</span>
+          </div>
+          <h3>Free Headkicks Tee</h3>
+          <div class="sub">Unisex &nbsp;·&nbsp; 100% Cotton &nbsp;·&nbsp; Black</div>
+          <p class="desc">Free Headkicks served up fresh daily! This dope T-shirt will make you feel like a real Champion! This shirt is perfect to show everyone that you love to kick people in the head — or maybe you just like watching someone catch a Free Headkick!</p>
+          <ul class="desc-list">
+            <li>Black T-shirt</li>
+            <li>100% cotton</li>
+            <li>Lighter fabric (4.0 oz/yd² (113 g/m²))</li>
+            <li>Regular fit</li>
+            <li>Tagless</li>
+            <li>Logo on right sleeve</li>
+            <li>Runs true to size</li>
+            <li>Machine wash inside out</li>
+            <li>Excellent gift for anyone that appreciates Headkicks</li>
+            <li>Perfect if you love Martial Arts</li>
+            <li>Stylish and comfortable</li>
+          </ul>
+
+          <div class="price-row">
+            <span class="price">$23.99</span>
+            <span class="price-note">USD · Ships from LA</span>
+          </div>
+
+          <span class="field-label">Size</span>
+          <div class="size-row" id="sizeRow">
+            <button class="size-opt" data-size="S">S</button>
+            <button class="size-opt active" data-size="M">M</button>
+            <button class="size-opt" data-size="L">L</button>
+            <button class="size-opt" data-size="XL">XL</button>
+            <button class="size-opt" data-size="2XL">2XL</button>
+          </div>
+          <button type="button" class="size-chart-link" id="sizeChartOpen">Size Chart &#8599;</button>
+
+          <span class="field-label">Quantity</span>
+          <div class="qty-buy">
+            <div class="qty">
+              <button type="button" id="qtyMinus" aria-label="Decrease quantity">–</button>
+              <span id="qtyVal" class="mono">1</span>
+              <button type="button" id="qtyPlus" aria-label="Increase quantity">+</button>
+            </div>
+            <button type="button" class="buy-btn" id="buyBtn">Add to cart — Checkout</button>
+          </div>
+
+          <p class="checkout-note" id="checkoutNote">Stripe checkout connects here — swap the #TODO in script.js for your Payment Link or Checkout Session.</p>
+
+          <div class="ticket-foot">
+            <span>Est. 2012</span>
+            <span>#FHK All Day!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUND 03 — THE FIGHTER -->
+  <section class="round" id="founder">
+    <div class="wrap">
+      <div class="founder-grid">
+        <div class="founder-copy">
+          <p>Based out of Los Angeles, #FHK sits at the crossroads of the ring and the street — apparel for people who train hard and have that Champion mindset!</p>
+          <div class="founder-sig">
+            <img src="assets/badge-logo.png" alt="">
+            <div>
+              <div class="name">Free Headkicks</div>
+              <div class="role">Created by a Battle Tested Fighter</div>
+            </div>
+          </div>
+        </div>
+        <div class="founder-photo">
+          <span class="belt-tag mono">Champion</span>
+          <a href="#shop" aria-label="Shop the tee">
+            <img src="assets/founder-kick.jpg" alt="Founder landing a head kick in competition">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL / FOOTER -->
+  <section class="bell">
+    <div class="wrap">
+      <div class="social-row">
+        <a href="https://www.instagram.com/freeheadkicks/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://shop.tiktok.com/us/pdp/unisex-t-shirt-by-free-headkicks-black-cotton-martial-arts-apparel/1729489246567109226?source=ecommerce_searchresult&enter_method=feed_list_search_word&first_entrance=personal_homepage&first_entrance_position=navigation_bar&first_entrance_tt_scene=seo&btm_pre=a18064.b62519.c89434.d59008_i0&btm_pre_show_id=59484dae-c165-459b-b0e7-4afece939e73&btm_transfer_id=ac6aaaeb-51e5-429a-a9f0-c308684cb4c6&btm_ppre=a18064.b46636.c85593.d73246" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.youtube.com/@FreeHeadkicks" target="_blank" rel="noopener">YouTube</a>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-brand">
+          <img src="assets/logo-vector.svg" alt="Free Headkicks logo">
+        </div>
+        <div class="footer-meta">© 2026 Free Headkicks · Los Angeles, CA · #FHK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIZE CHART MODAL -->
+  <div class="modal-overlay" id="sizeChartOverlay">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="sizeChartTitle">
+      <button type="button" class="modal-close" id="sizeChartClose" aria-label="Close size chart">&#10005;</button>
+      <div class="modal-header">
+        <h3 id="sizeChartTitle">Size Chart</h3>
+        <div class="modal-sub mono">Size type: Regular &nbsp;·&nbsp; Body measurement</div>
+      </div>
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Chest (inch)</th>
+            <th>Length (inch)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>XS</td><td>31&Prime;&ndash;34&Prime;</td><td>27&Prime;</td></tr>
+          <tr><td>S</td><td>34&Prime;&ndash;37&Prime;</td><td>28&Prime;</td></tr>
+          <tr><td>M</td><td>38&Prime;&ndash;41&Prime;</td><td>29&Prime;</td></tr>
+          <tr><td>L</td><td>42&Prime;&ndash;45&Prime;</td><td>30&Prime;</td></tr>
+          <tr><td>XL</td><td>46&Prime;&ndash;49&Prime;</td><td>31&Prime;</td></tr>
+          <tr><td>2XL</td><td>50&Prime;&ndash;53&Prime;</td><td>32&Prime;</td></tr>
+          <tr><td>3XL</td><td>54&Prime;&ndash;57&Prime;</td><td>33&Prime;</td></tr>
+          <tr><td>4XL</td><td>58&Prime;&ndash;61&Prime;</td><td>34&Prime;</td></tr>
+          <tr><td>5XL</td><td>62&Prime;&ndash;65&Prime;</td><td>35&Prime;</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "free-headkicks-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Free Headkicks storefront — static site + Netlify Functions for Stripe Checkout.",
+  "dependencies": {
+    "stripe": "^22.0.0"
+  }
+}
