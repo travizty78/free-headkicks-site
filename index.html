@@ -24,6 +24,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -518,7 +519,14 @@
   }
   .size-row{
     display:flex; gap:8px; flex-wrap:wrap;
+    align-items:flex-start;
     margin-bottom:24px;
+  }
+  .size-opt-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
   }
   .size-opt{
     font-family:'Space Mono', monospace;
@@ -538,6 +546,28 @@
     background:var(--ink);
     color:var(--paper);
     border-color:var(--ink);
+  }
+  .size-opt.sold-out{
+    position:relative;
+    color:rgba(12,12,13,0.3);
+    border-color:rgba(12,12,13,0.15);
+    cursor:not-allowed;
+    background:rgba(12,12,13,0.03);
+  }
+  .size-opt.sold-out::before{
+    content:"";
+    position:absolute;
+    left:4px; right:4px; top:50%;
+    border-top:2px solid rgba(12,12,13,0.35);
+    transform:rotate(-18deg);
+  }
+  .size-opt.sold-out:hover{ border-color:rgba(12,12,13,0.15); }
+  .sold-out-label{
+    font-family:'Space Mono', monospace;
+    font-size:9px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--blood-2);
   }
   .size-chart-link{
     display:inline-flex;
@@ -895,7 +925,10 @@
 
           <span class="field-label">Size</span>
           <div class="size-row" id="sizeRow">
-            <button class="size-opt" data-size="S">S</button>
+            <div class="size-opt-wrap">
+              <button class="size-opt sold-out" data-size="S" disabled aria-label="Size S, sold out">S</button>
+              <span class="sold-out-label">Sold Out</span>
+            </div>
             <button class="size-opt active" data-size="M">M</button>
             <button class="size-opt" data-size="L">L</button>
             <button class="size-opt" data-size="XL">XL</button>
