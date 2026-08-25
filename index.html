@@ -650,6 +650,13 @@
     border-bottom:1px solid rgba(12,12,13,0.1);
   }
   .size-table tbody tr:nth-child(even){ background:rgba(12,12,13,0.035); }
+  .policy-text{
+    font-size:14px;
+    line-height:1.7;
+    color:#3a3835;
+    margin:0 0 16px;
+  }
+  .policy-text:last-child{ margin-bottom:0; }
   .size-table tbody tr:hover{ background:rgba(217,30,43,0.06); }
   .qty-buy{
     display:flex; gap:12px; align-items:stretch;
@@ -782,9 +789,11 @@
     color:var(--brass);
   }
   .footer-bottom{
-    display:flex; align-items:center; justify-content:space-between;
     padding-top:32px;
     border-top:1px solid var(--line);
+  }
+  .footer-row-top{
+    display:flex; align-items:center; justify-content:space-between;
     flex-wrap:wrap;
     gap:16px;
   }
@@ -792,11 +801,35 @@
   .footer-brand img{ height:72px; width:72px; opacity:0.92; }
   .footer-brand span{ font-family:'Anton', sans-serif; font-size:13px; letter-spacing:0.05em; color:var(--concrete); }
   .footer-meta{
+    margin-top:20px;
     font-family:'Space Mono', monospace;
     font-size:11px;
     color:var(--concrete);
     text-transform:uppercase;
     letter-spacing:0.04em;
+  }
+  .policy-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .policy-link{
+    background:none;
+    border:none;
+    padding:0;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--concrete);
+    cursor:pointer;
+    transition: color 0.2s ease;
+  }
+  .policy-link:hover{ color:var(--paper); }
+  .policy-sep{
+    color:var(--concrete);
+    opacity:0.5;
+    font-size:11px;
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -990,8 +1023,17 @@
         <a href="https://www.youtube.com/@FreeHeadkicks" target="_blank" rel="noopener">YouTube</a>
       </div>
       <div class="footer-bottom">
-        <div class="footer-brand">
-          <img src="assets/logo-vector.svg" alt="Free Headkicks logo">
+        <div class="footer-row-top">
+          <div class="footer-brand">
+            <img src="assets/logo-vector.svg" alt="Free Headkicks logo">
+          </div>
+          <div class="policy-row">
+            <button type="button" class="policy-link" id="shippingOpen">Shipping</button>
+            <span class="policy-sep">·</span>
+            <button type="button" class="policy-link" id="refundsOpen">Refunds</button>
+            <span class="policy-sep">·</span>
+            <button type="button" class="policy-link" id="exchangeOpen">Exchange</button>
+          </div>
         </div>
         <div class="footer-meta">© 2026 Free Headkicks · Los Angeles, CA · #FHK</div>
       </div>
@@ -1026,6 +1068,43 @@
           <tr><td>5XL</td><td>62&Prime;&ndash;65&Prime;</td><td>35&Prime;</td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- SHIPPING MODAL -->
+  <div class="modal-overlay" id="shippingOverlay">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="shippingTitle">
+      <button type="button" class="modal-close" id="shippingClose" aria-label="Close shipping info">&#10005;</button>
+      <div class="modal-header">
+        <h3 id="shippingTitle">Shipping</h3>
+        <div class="modal-sub mono">Ships from Los Angeles, CA</div>
+      </div>
+      <p class="policy-text">After an order is placed, an Order Confirmation will be emailed. Then a second email will be sent out with the tracking number.</p>
+      <p class="policy-text"><strong>Standard Shipping:</strong> 4–8 business days<br><strong>Free Shipping:</strong> $50 or more (Domestic Only)</p>
+    </div>
+  </div>
+
+  <!-- REFUNDS MODAL -->
+  <div class="modal-overlay" id="refundsOverlay">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="refundsTitle">
+      <button type="button" class="modal-close" id="refundsClose" aria-label="Close refunds info">&#10005;</button>
+      <div class="modal-header">
+        <h3 id="refundsTitle">Refunds</h3>
+      </div>
+      <p class="policy-text">Refunds will only be granted if the shirt is defective (incorrect print ink, wrong placement of design, irregular shirt), with detailed photos needed.</p>
+      <p class="policy-text">Email <strong>info@pivotecom.com</strong> for refunds &amp; exchanges.</p>
+    </div>
+  </div>
+
+  <!-- EXCHANGE MODAL -->
+  <div class="modal-overlay" id="exchangeOverlay">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="exchangeTitle">
+      <button type="button" class="modal-close" id="exchangeClose" aria-label="Close exchange info">&#10005;</button>
+      <div class="modal-header">
+        <h3 id="exchangeTitle">Exchange</h3>
+      </div>
+      <p class="policy-text">Exchanges will only be granted within 30 days and must be in original packaging.</p>
+      <p class="policy-text">Email <strong>info@pivotecom.com</strong> for refunds &amp; exchanges.</p>
     </div>
   </div>
 
