@@ -93,28 +93,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- Size chart modal ---
-  const sizeChartOpen = document.getElementById('sizeChartOpen');
-  const sizeChartClose = document.getElementById('sizeChartClose');
-  const sizeChartOverlay = document.getElementById('sizeChartOverlay');
+  // --- Modals (size chart, shipping, returns/exchanges) ---
+  const modalConfigs = [
+    { openId: 'sizeChartOpen', closeId: 'sizeChartClose', overlayId: 'sizeChartOverlay' },
+    { openId: 'shippingOpen', closeId: 'shippingClose', overlayId: 'shippingOverlay' },
+    { openId: 'refundsOpen', closeId: 'refundsClose', overlayId: 'refundsOverlay' },
+    { openId: 'exchangeOpen', closeId: 'exchangeClose', overlayId: 'exchangeOverlay' },
+  ];
 
-  function openSizeChart() {
-    sizeChartOverlay.classList.add('open');
+  const openOverlays = new Set();
+
+  function openModal(overlay) {
+    overlay.classList.add('open');
+    openOverlays.add(overlay);
     document.body.style.overflow = 'hidden';
   }
-  function closeSizeChart() {
-    sizeChartOverlay.classList.remove('open');
-    document.body.style.overflow = '';
+  function closeModal(overlay) {
+    overlay.classList.remove('open');
+    openOverlays.delete(overlay);
+    if (openOverlays.size === 0) document.body.style.overflow = '';
   }
-  if (sizeChartOpen) sizeChartOpen.addEventListener('click', openSizeChart);
-  if (sizeChartClose) sizeChartClose.addEventListener('click', closeSizeChart);
-  if (sizeChartOverlay) {
-    sizeChartOverlay.addEventListener('click', (e) => {
-      if (e.target === sizeChartOverlay) closeSizeChart();
+
+  modalConfigs.forEach(({ openId, closeId, overlayId }) => {
+    const openBtn = document.getElementById(openId);
+    const closeBtn = document.getElementById(closeId);
+    const overlay = document.getElementById(overlayId);
+    if (!overlay) return;
+    if (openBtn) openBtn.addEventListener('click', () => openModal(overlay));
+    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(overlay));
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal(overlay);
     });
-  }
+  });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSizeChart();
+    if (e.key === 'Escape') {
+      openOverlays.forEach((overlay) => closeModal(overlay));
+    }
   });
 
   // --- Nav background solidify on scroll (subtle) ---
