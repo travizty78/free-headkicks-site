@@ -9,7 +9,7 @@
 //
 // Optional environment variables (sensible defaults are used if omitted):
 //   TEE_PRICE_USD        — price in dollars, defaults to 23.99
-//   SHIPPING_FLAT_USD     — flat domestic shipping rate in dollars, defaults to 5.99
+//   SHIPPING_FLAT_USD     — flat domestic shipping rate in dollars, defaults to 4.99
 //   FREE_SHIPPING_OVER_USD — order subtotal (pre-shipping) that qualifies for
 //                            free shipping, defaults to 75
 //   SITE_URL              — your live domain, e.g. https://freeheadkicks.com
@@ -31,7 +31,7 @@ exports.handler = async (event) => {
     const chosenSize = validSizes.includes(size) ? size : 'M';
 
     const teePriceUsd = parseFloat(process.env.TEE_PRICE_USD || '23.99');
-    const shippingFlatUsd = parseFloat(process.env.SHIPPING_FLAT_USD || '5.99');
+    const shippingFlatUsd = parseFloat(process.env.SHIPPING_FLAT_USD || '4.99');
     const freeShippingOverUsd = parseFloat(process.env.FREE_SHIPPING_OVER_USD || '75');
     const siteUrl = process.env.SITE_URL || process.env.URL || 'https://freeheadkicks.com';
 
