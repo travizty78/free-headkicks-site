@@ -79,21 +79,11 @@
   <div class="card">
     <img src="assets/badge-logo.png" alt="Free Headkicks" class="badge">
     <div class="eyebrow">Order Confirmed</div>
-    <h1>Fresh <span class="accent">Headkicks</span><br>on the way.</h1>
-    <p>Thanks for the order — your Free Headkicks tee is getting packed up in Los Angeles.</p>
-    <p>A receipt is on its way to your inbox from Stripe.</p>
-    <div class="order-id" id="orderId"></div>
+    <h1>Fresh Free <span class="accent">Headkicks</span> gear is on the way!<br><span class="accent">#FHK</span> all day</h1>
+    <p>Thanks for your order — your Free Headkicks order is getting ready to be sent out with the quickness once processed.</p>
+    <p>A receipt is on its way to your inbox from Stripe, then an email with tracking information will follow.</p>
     <a href="/" class="btn">Back to Free Headkicks</a>
   </div>
-
-<script>
-  // Purely cosmetic — shows the Checkout Session ID for the customer's
-  // reference if they need to contact you about their order.
-  const params = new URLSearchParams(window.location.search);
-  const sessionId = params.get('session_id');
-  if (sessionId) {
-    document.getElementById('orderId').textContent = 'Order ref: ' + sessionId;
-  }
-</script>
 </body>
 </html>
+
